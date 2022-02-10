@@ -9,7 +9,17 @@ import Foundation
 import Combine
 
 final class ChannelsViewModel: ObservableObject {
-    @Published var timeCells: [String] = []
+    @Published var timeCells: [String] = {
+        let hours = Array(1...23)
+        var timeText: [String] = []
+        for index in hours {
+            timeText.append("\(index):00")
+            timeText.append("\(index):30")
+        }
+        let currentDateText = "Today,\n\(Constants.currentDate)"
+        timeText.insert(currentDateText, at: 0)
+        return timeText
+    }()
     @Published var channels: [Channel] = []
     @Published var programItems: [[ProgramItem]] = []
 //    var programItems: [ProgramItem] = []
@@ -35,7 +45,6 @@ final class ChannelsViewModel: ObservableObject {
 
     //MARK: - Private Methods
     private func fetchData() {
-        makeTimeArray()
         fetchChannels()
         //        fetchProgramItems()
     }
@@ -102,20 +111,6 @@ final class ChannelsViewModel: ObservableObject {
         let separatedTime = time.components(separatedBy: ":").compactMap(Int.init)
         return separatedTime
     }
-
-    private func makeTimeArray() {
-        let hours = Array(1...23)
-        var timeText: [String] = []
-        for index in hours {
-            timeText.append("\(index):00")
-            timeText.append("\(index):30")
-        }
-        let currentDateText = "Today,\n\(Constants.currentDate)"
-        timeText.insert(currentDateText, at: 0)
-        timeCells = timeText
-    }
-
-
 }
 
 
