@@ -9,7 +9,13 @@ import Foundation
 import Alamofire
 import Combine
 
-class APIService {
+protocol APIServiceProtocol {
+    func fetchChannels() -> AnyPublisher<[Channel], AFError>
+    func fetchProgramItems() -> AnyPublisher<[ProgramItem], AFError>
+    func fetchChannel(id: Int) -> AnyPublisher<Channel, AFError>
+}
+
+class APIService: APIServiceProtocol {
     func fetchChannels() -> AnyPublisher<[Channel], AFError> {
         let url = Hosts.channelsHost
         let publisher = AF.request(url).publishDecodable(type: [Channel].self)
