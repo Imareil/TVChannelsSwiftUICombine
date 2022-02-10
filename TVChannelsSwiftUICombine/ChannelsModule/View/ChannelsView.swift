@@ -38,7 +38,7 @@ struct ChannelsView: View {
                                 HStack {
                                     VStack(alignment: .leading, spacing: Constants.vSpacing) {
                                         Text("\(outIndex + 1)")
-                                        Text("\(viewModel.channels[outIndex].callSign)")
+                                        Text(viewModel.channels[safeIndex: outIndex]?.callSign ?? "")
                                     }
                                     Spacer()
                                 }.padding(Constants.padding)

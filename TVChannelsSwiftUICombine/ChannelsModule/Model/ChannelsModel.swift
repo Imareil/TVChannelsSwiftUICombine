@@ -8,10 +8,8 @@
 import SwiftyJSON
 
 struct Channel: Codable, Identifiable {
-    let orderNum: Int
-    let accessNum: Int
+    let orderNum, accessNum, id: Int
     let callSign: String
-    let id: Int
 
     enum CodingKeys: String, CodingKey {
         case orderNum, accessNum, id

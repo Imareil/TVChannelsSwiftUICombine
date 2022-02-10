@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 final class ChannelsViewModel: ObservableObject {
+    @Published var channels: [Channel] = []
+    @Published var programItems: [[ProgramItem]] = []
     @Published var timeCells: [String] = {
         let hours = Array(1...23)
         var timeText: [String] = []
@@ -20,14 +22,12 @@ final class ChannelsViewModel: ObservableObject {
         timeText.insert(currentDateText, at: 0)
         return timeText
     }()
-    @Published var channels: [Channel] = []
-    @Published var programItems: [[ProgramItem]] = []
-//    var programItems: [ProgramItem] = []
 
-    var cancellation: AnyCancellable?
-    let service = APIService()
+    private var subscriptions = Set<AnyCancellable>()
+    private let service: APIServiceProtocol
 
-    init() {
+    init(apiSevice: APIServiceProtocol = APIService()) {
+        self.service = apiSevice
         fetchData()
     }
 
@@ -46,31 +46,30 @@ final class ChannelsViewModel: ObservableObject {
     //MARK: - Private Methods
     private func fetchData() {
         fetchChannels()
-        //        fetchProgramItems()
+        fetchProgramItems()
     }
 
     private func fetchChannels() {
-        cancellation = service.fetchChannels()
+        service.fetchChannels()
             .mapError({ (error) -> Error in
                 print(error)
                 return error
             })
-            .sink(receiveCompletion: { _ in }, receiveValue: { channels in
+            .sink { _ in } receiveValue: { channels in
                 self.channels = channels
-                self.fetchProgramItems()
-            })
+            }.store(in: &subscriptions)
     }
 
     private func fetchProgramItems() {
-        cancellation = service.fetchProgramItems()
+        service.fetchProgramItems()
             .mapError({ (error) -> Error in
                 print(error)
                 return error
             })
-            .sink(receiveCompletion: { _ in }, receiveValue: { programItems in
-//                self.programItems = programItems
-                self.setTVProgram(items: programItems)
+            .sink(receiveCompletion: { _ in }, receiveValue: { items in
+                self.setTVProgram(items: items)
             })
+            .store(in: &subscriptions)
     }
 
     private func setTVProgram(items: [ProgramItem]) {
