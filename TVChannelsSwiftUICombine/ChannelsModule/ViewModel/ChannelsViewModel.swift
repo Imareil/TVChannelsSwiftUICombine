@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class ChannelsViewModel: ObservableObject {
     @Published var channels: [Channel] = []
@@ -26,21 +27,16 @@ final class ChannelsViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     private let service: APIServiceProtocol
 
-    init(apiSevice: APIServiceProtocol = APIService()) {
-        self.service = apiSevice
+//    private let service: APIService
+
+    init(service: APIServiceProtocol) {
+        self.service = service
         fetchData()
     }
 
-    //MARK: - Public Methods
-    func convertTime(isoTime: String) -> [String] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.dateFormat
-        if let date = dateFormatter.date(from: isoTime) {
-            let stringDate = "\(date)"
-            return stringDate.components(separatedBy: " ")
-        } else {
-            return [""]
-        }
+    init(apiSevice: APIServiceProtocol = APIService()) {
+        self.service = apiSevice
+        fetchData()
     }
 
     //MARK: - Private Methods
@@ -79,7 +75,7 @@ final class ChannelsViewModel: ObservableObject {
         for id in channelIDs {
             var programs = items
                 .filter { id == $0.recentAirTime.channelID }
-                .filter { convertTime(isoTime: $0.startTime).first == Constants.currentDate }
+                .filter { $0.startTime.convertTime(dateType: .date) == Constants.currentDate }
 
             let checkedStartTime = checkstartTime(startTime: programs.first?.startTime ?? "")
 
@@ -91,16 +87,16 @@ final class ChannelsViewModel: ObservableObject {
                                          name: Constants.noProgram)
                 programs.insert(prItem, at: 0)
             }
-
+            
             progItems.append(programs)
         }
         programItems = progItems
     }
 
     private func checkstartTime(startTime: String) -> Int {
-        let convertedTime = convertTime(isoTime: startTime)
-        let hours = separateTime(time: convertedTime[1])[0] - 1
-        let minutes = separateTime(time: convertedTime[1])[1]
+        let convertedTime = startTime.convertTime(dateType: .time)
+        let hours = separateTime(time: convertedTime)[0] - 1
+        let minutes = separateTime(time: convertedTime)[1]
 
         let time = hours * 60 + minutes
         return time
