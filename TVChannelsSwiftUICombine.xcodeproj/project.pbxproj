@@ -13,15 +13,17 @@
 		2C404DED2795B2B7008E96B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C404DEC2795B2B7008E96B3 /* Alamofire */; };
 		2C404DEF2795B3A4008E96B3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C404DEE2795B3A4008E96B3 /* APIService.swift */; };
 		2C404DF22795B40E008E96B3 /* Hosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C404DF12795B40E008E96B3 /* Hosts.swift */; };
+		2C627AEC27B6717F008F0547 /* ProgramItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C627AEB27B6717F008F0547 /* ProgramItemView.swift */; };
+		2C627AEE27B671A1008F0547 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C627AED27B671A1008F0547 /* ChannelView.swift */; };
+		2C627AF027B671C0008F0547 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C627AEF27B671C0008F0547 /* TimeView.swift */; };
+		2C627AF227B67BF5008F0547 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C627AF127B67BF5008F0547 /* String + Extension.swift */; };
 		2CDF74042795A36900DD200D /* TVChannelsSwiftUICombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF74032795A36900DD200D /* TVChannelsSwiftUICombineApp.swift */; };
 		2CDF74082795A36B00DD200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF74072795A36B00DD200D /* Assets.xcassets */; };
 		2CDF740B2795A36B00DD200D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF740A2795A36B00DD200D /* Preview Assets.xcassets */; };
-		2CDF74122795A72B00DD200D /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF74112795A72B00DD200D /* ChannelsView.swift */; };
+		2CDF74122795A72B00DD200D /* TVProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF74112795A72B00DD200D /* TVProgramView.swift */; };
 		2CDF74152795A76300DD200D /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF74142795A76300DD200D /* ChannelsViewModel.swift */; };
 		2CDF74182795A77C00DD200D /* ChannelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF74172795A77C00DD200D /* ChannelsModel.swift */; };
 		2CDF741C2795A7B900DD200D /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF741B2795A7B900DD200D /* DetailsView.swift */; };
-		2CDF741E2795A7C300DD200D /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF741D2795A7C300DD200D /* DetailsViewModel.swift */; };
-		2CDF74202795A7CF00DD200D /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF741F2795A7CF00DD200D /* DetailsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,16 +31,18 @@
 		2C2E7B2727972C8F005FFBBB /* Array + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
 		2C404DEE2795B3A4008E96B3 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		2C404DF12795B40E008E96B3 /* Hosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hosts.swift; sourceTree = "<group>"; };
+		2C627AEB27B6717F008F0547 /* ProgramItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramItemView.swift; sourceTree = "<group>"; };
+		2C627AED27B671A1008F0547 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
+		2C627AEF27B671C0008F0547 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		2C627AF127B67BF5008F0547 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		2CDF74002795A36900DD200D /* TVChannelsSwiftUICombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVChannelsSwiftUICombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF74032795A36900DD200D /* TVChannelsSwiftUICombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVChannelsSwiftUICombineApp.swift; sourceTree = "<group>"; };
 		2CDF74072795A36B00DD200D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CDF740A2795A36B00DD200D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2CDF74112795A72B00DD200D /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
+		2CDF74112795A72B00DD200D /* TVProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVProgramView.swift; sourceTree = "<group>"; };
 		2CDF74142795A76300DD200D /* ChannelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewModel.swift; sourceTree = "<group>"; };
 		2CDF74172795A77C00DD200D /* ChannelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsModel.swift; sourceTree = "<group>"; };
 		2CDF741B2795A7B900DD200D /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		2CDF741D2795A7C300DD200D /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		2CDF741F2795A7CF00DD200D /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				2C2E7B2727972C8F005FFBBB /* Array + Extension.swift */,
+				2C627AF127B67BF5008F0547 /* String + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,7 +126,10 @@
 		2CDF74132795A73000DD200D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2CDF74112795A72B00DD200D /* ChannelsView.swift */,
+				2CDF74112795A72B00DD200D /* TVProgramView.swift */,
+				2C627AEB27B6717F008F0547 /* ProgramItemView.swift */,
+				2C627AED27B671A1008F0547 /* ChannelView.swift */,
+				2C627AEF27B671C0008F0547 /* TimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,28 +168,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		2CDF74222795A7DD00DD200D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				2CDF741D2795A7C300DD200D /* DetailsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2CDF74232795A7E600DD200D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2CDF741F2795A7CF00DD200D /* DetailsModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2CDF74242795A7EF00DD200D /* DetailsModule */ = {
 			isa = PBXGroup;
 			children = (
 				2CDF74212795A7D400DD200D /* View */,
-				2CDF74222795A7DD00DD200D /* ViewModel */,
-				2CDF74232795A7E600DD200D /* Model */,
 			);
 			path = DetailsModule;
 			sourceTree = "<group>";
@@ -265,13 +255,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDF74182795A77C00DD200D /* ChannelsModel.swift in Sources */,
+				2C627AF027B671C0008F0547 /* TimeView.swift in Sources */,
+				2C627AF227B67BF5008F0547 /* String + Extension.swift in Sources */,
+				2C627AEC27B6717F008F0547 /* ProgramItemView.swift in Sources */,
 				2CDF74042795A36900DD200D /* TVChannelsSwiftUICombineApp.swift in Sources */,
 				2CDF74152795A76300DD200D /* ChannelsViewModel.swift in Sources */,
 				2C404DF22795B40E008E96B3 /* Hosts.swift in Sources */,
-				2CDF74202795A7CF00DD200D /* DetailsModel.swift in Sources */,
 				2C2E7B2627970604005FFBBB /* Constants.swift in Sources */,
-				2CDF741E2795A7C300DD200D /* DetailsViewModel.swift in Sources */,
-				2CDF74122795A72B00DD200D /* ChannelsView.swift in Sources */,
+				2CDF74122795A72B00DD200D /* TVProgramView.swift in Sources */,
+				2C627AEE27B671A1008F0547 /* ChannelView.swift in Sources */,
 				2C2E7B2827972C8F005FFBBB /* Array + Extension.swift in Sources */,
 				2C404DEF2795B3A4008E96B3 /* APIService.swift in Sources */,
 				2CDF741C2795A7B900DD200D /* DetailsView.swift in Sources */,

@@ -8,18 +8,57 @@
 import Foundation
 import Alamofire
 import Combine
+import SwiftUI
 
 protocol APIServiceProtocol {
-    func fetchChannels() -> AnyPublisher<[Channel], AFError>
+    func fetchChannels() -> AnyPublisher<[Channel], Swift.Error>
     func fetchProgramItems() -> AnyPublisher<[ProgramItem], AFError>
-    func fetchChannel(id: Int) -> AnyPublisher<Channel, AFError>
 }
 
-class APIService: APIServiceProtocol {
-    func fetchChannels() -> AnyPublisher<[Channel], AFError> {
-        let url = Hosts.channelsHost
-        let publisher = AF.request(url).publishDecodable(type: [Channel].self)
-        return publisher.value()
+final class APIService: APIServiceProtocol {
+    enum Error: Swift.Error, CustomStringConvertible {
+        case network
+        case parsing
+        case unknown
+
+        var description: String {
+            switch self {
+            case .network:
+                return "Request to API server failed"
+            case .parsing:
+                return "Failed parsing return from server"
+            case .unknown:
+                return "An unknown error occured"
+            }
+        }
+    }
+
+    func fetchChannels() -> AnyPublisher<[Channel], Swift.Error> {
+        let url = URL(string: Hosts.channelsHost)!
+        let request = URLRequest(url: url)
+
+        return URLSession.shared
+            .dataTaskPublisher(for: request)
+            .tryMap { data, _ -> Data in
+                guard let obj = try? JSONSerialization.jsonObject(with: data),
+                      let dict = obj as? [String : Any],
+                      dict["status"] as? Int == 404
+                else { return data }
+
+                throw APIService.Error.unknown
+            }
+            .decode(type: [Channel].self, decoder: JSONDecoder())
+            .mapError { error -> APIService.Error in
+                switch error {
+                case is URLError:
+                    return .network
+                case is DecodingError:
+                    return .parsing
+                default:
+                    return error as? APIService.Error ?? .unknown
+                }
+            }
+            .eraseToAnyPublisher()
     }
 
     func fetchProgramItems() -> AnyPublisher<[ProgramItem], AFError> {
@@ -27,13 +66,6 @@ class APIService: APIServiceProtocol {
         let publisher = AF.request(url).publishDecodable(type: [ProgramItem].self)
         return publisher.value()
     }
-
-    func fetchChannel(id: Int) -> AnyPublisher<Channel, AFError> {
-        let url = Hosts.channelsHost
-        let publisher = AF.request(url).publishDecodable(type: Channel.self)
-        return publisher.value()
-    }
-
 }
 
 
